@@ -1,0 +1,9 @@
+def Solution():
+   from itertools import product
+   results, numbers = [], range(1, 10)
+   for perm in product(['+','-', ''], repeat=8): # iterate on arrangements of operators
+       tuples = zip(numbers, perm + ('', )) # add something for digit 9
+       expression = ''.join([str(e1) + e2 for (e1, e2) in tuples]) # create expression as string
+       if eval(expression) == 100: # you know what this does
+           results.append(expression + ' = 100')
+   return results
